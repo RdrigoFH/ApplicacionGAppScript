@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<?!= include('JS'); ?>
 <title>Import Company Products Form</title>
 <style>
   body {
@@ -53,15 +52,16 @@
   }
 
   input[type="submit"]:hover {
-    background-color: #000000;
+    background-color: #45a049;
   }
 </style>
+<?!= include('JS'); ?>
 </head>
 <body>
 
 <h2>Import Company Products Form</h2>
 
-<form id="MyForm" onsubmit="handleFormSubmit" method="post">
+<form id="myForm" onsubmit="handleFormSubmit(this)">
   <label for="product_name">Product Name:</label><br>
   <input type="text" id="product_name" name="product_name" required><br><br>
   
@@ -77,7 +77,7 @@
     <option value="china">China</option>
     <option value="usa">USA</option>
     <option value="germany">Germany</option>
-
+  
   </select><br><br>
   
   <label for="import_date">Import Date:</label><br>
