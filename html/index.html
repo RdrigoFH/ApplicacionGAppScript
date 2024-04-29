@@ -1,44 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>CompanyForm</title>
-   <link rel="stylesheet" href="..\css\styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?!= include('JS'); ?>
+<title>Import Company Products Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #000000;
+  }
+</style>
 </head>
 <body>
 
-   <h2>Import Company Products Form</h2>
-   
-   <form action="/submit_import_form" method="post">
-     <label for="product_name">Product Name:</label><br>
-     <input type="text" id="product_name" name="product_name" required><br><br>
-     
-     <label for="product_description">Product Description:</label><br>
-     <textarea id="product_description" name="product_description" rows="4" cols="50" required></textarea><br><br>
-     
-     <label for="product_quantity">Quantity:</label><br>
-     <input type="number" id="product_quantity" name="product_quantity" required><br><br>
-     
-     <label for="import_country">Import Country:</label><br>
-     <select id="import_country" name="import_country" required>
-       <option value="">Select Country</option>
-       <option value="china">China</option>
-       <option value="usa">USA</option>
-       <option value="germany">Germany</option>
-     </select><br><br>
-     
-     <label for="import_date">Import Date:</label><br>
-     <input type="date" id="import_date" name="import_date" required><br><br>
-     
-     <label for="shipping_method">Shipping Method:</label><br>
-     <input type="radio" id="shipping_air" name="shipping_method" value="air" required>
-     <label for="shipping_air">Air</label><br>
-     <input type="radio" id="shipping_sea" name="shipping_method" value="sea" required>
-     <label for="shipping_sea">Sea</label><br><br>
-     
-     <input type="submit" value="Submit">
-   </form>
-   
-   </body>
+<h2>Import Company Products Form</h2>
+
+<form id="MyForm" onsubmit="handleFormSubmit" method="post">
+  <label for="product_name">Product Name:</label><br>
+  <input type="text" id="product_name" name="product_name" required><br><br>
+  
+  <label for="product_description">Product Description:</label><br>
+  <textarea id="product_description" name="product_description" rows="4" cols="50" required></textarea><br><br>
+  
+  <label for="product_quantity">Quantity:</label><br>
+  <input type="number" id="product_quantity" name="product_quantity" required><br><br>
+  
+  <label for="import_country">Import Country:</label><br>
+  <select id="import_country" name="import_country" required>
+    <option value="">Select Country</option>
+    <option value="china">China</option>
+    <option value="usa">USA</option>
+    <option value="germany">Germany</option>
+
+  </select><br><br>
+  
+  <label for="import_date">Import Date:</label><br>
+  <input type="date" id="import_date" name="import_date" required><br><br>
+  
+  <label for="shipping_method">Shipping Method:</label><br>
+  <input type="radio" id="shipping_air" name="shipping_method" value="air" required>
+  <label for="shipping_air">Air</label><br>
+  <input type="radio" id="shipping_sea" name="shipping_method" value="sea" required>
+  <label for="shipping_sea">Sea</label><br><br>
+  
+  <input type="submit" value="Submit">
+</form>
+
+</body>
 </html>
