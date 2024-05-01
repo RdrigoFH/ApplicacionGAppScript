@@ -4,10 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Envio de Mensaje</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lemon&family=Pacifico&display=swap');
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            font-family: "Fira Sans", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+        .f{
+            margin: 1rem;
+            background-color: aquamarine;
+            padding: 2rem;
+            border-radius: 2rem;
+        }
+
+        
+    </style>
 </head>
 <body>
-    <form id="type">
+    <form class ="f" id="type">
+        <h2>Enviar Mensaje</h2>
+
         <div class="client-types">
+            <p>Seleccione el tipo</p>
             <input type="radio" id="all" name="type-client" value="0">
             <label for="0">Todos</label>
             <input type="radio" id="importer" name="type-client" value="1">
@@ -17,6 +41,7 @@
         </div>
     
         <div class="select-option">
+            <p>Seleccione la ubicacion</p>
             <input type="checkbox" id="all-country" name="all-country" value="4">
             <label for="4">Todos</label>
 
@@ -37,7 +62,7 @@
             <textarea style="resize: none;" type="message" rows="30" cols="50"></textarea>
         </div>
     
-      <input type="submit" value="Submit">
+      <input type="submit" value="Enviar">
     </form>
     <script src="..\js\location_dropdown.js"></script>
 </body>
