@@ -3,6 +3,7 @@
 body {
     margin: 0;
     padding: 0;
+    
 }
 .logo{
     font-family: "Pacifico", cursive;
@@ -72,4 +73,68 @@ footer .fa{
     padding-inline: 2rem;
 }
 
+ /* For notifications*/
+ .container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    background-color: #e04b4b;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    border: 1rem solid #000000;
 
+    
+
+ }
+ .message{
+    position: absolute;
+    top: 10px;
+    left: 40%;
+    transform: translateX(-30%);
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+ }
+ .link{
+    display: flex;
+    gap: 3rem;
+
+ }
+ .link a{
+    font-family: "Pacifico";
+
+    background-color: rgb(186, 211, 97);
+    padding: 2rem;
+    border-radius: .5rem;
+    text-decoration: none;
+
+ }
+  .minBox img{
+    width: 120px;
+  }
+.minBox {
+    transition: transform 0.3s ease;
+}
+.minBox:hover {
+    transform: scale(1.3);
+}
+.back{
+    position: absolute;
+    bottom: 10px;
+    transition: transform 0.3s ease;
+
+}
+.back img{
+    width: 75px;
+}
+
+.back:hover {
+    transform: scale(1.3);
+}
