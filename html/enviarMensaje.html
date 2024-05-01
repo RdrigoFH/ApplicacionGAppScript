@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de Mensaje</title>
+</head>
+<body>
+    <form id="type">
+        <div class="client-types">
+            <input type="radio" id="all" name="type-client" value="0">
+            <label for="0">Todos</label>
+            <input type="radio" id="importer" name="type-client" value="1">
+            <label for="1">Importador</label>
+            <input type="radio" id="exporter" name="type-client" value="2">
+            <label for="2">Exportador</label><br>
+        </div>
+    
+        <div class="select-option">
+            <input type="checkbox" id="all-country" name="all-country" value="4">
+            <label for="4">Todos</label>
+
+            <select class = "form-select country" label ="Default select example" onchange="loadStates()">
+                <option selected>Seleccionar Pais</option>
+            </select>
+            <select class = "form-select state" label ="Default select example" onchange="loadCities()">
+                <option selected>Seleccionar Estado</option>
+            </select>
+            <select class = "form-select city" label ="Default select example" onchange="fillLocation()">
+                <option selected>Seleccionar Ciudad</option>
+            </select>
+        </div>  
+        <div class="message">
+            <label for="asunto">Asunto</label><br>
+            <input type="text" id="asunto" name="asunto" size = "60"> <br>
+            <label for="contenido">Contenido</label><br>
+            <textarea style="resize: none;" type="message" rows="30" cols="50"></textarea>
+        </div>
+    
+      <input type="submit" value="Submit">
+    </form>
+    <script src="..\js\location_dropdown.js"></script>
+</body>
+</html>
