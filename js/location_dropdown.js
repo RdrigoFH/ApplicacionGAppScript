@@ -99,4 +99,27 @@ function fillLocation() {
         });
 }
 
+//For select all locations
+var allChecked = document.getElementById('all-country');
+allChecked.addEventListener('change', function() {
+    if (this.checked) {
+        countrySelect.disabled = true;
+        stateSelect.disabled = true;
+        citySelect.disabled = true;
+        countrySelect.style.pointerEvents = 'none';
+
+        stateSelect.style.pointerEvents = 'none';
+        citySelect.style.pointerEvents = 'none';
+
+    } else {
+
+        countrySelect.disabled = false;
+
+        countrySelect.style.pointerEvents = 'auto';
+
+    }
+});
+
+
+
 window.onload = loadCountries;
