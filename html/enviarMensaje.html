@@ -32,12 +32,12 @@
     </style>
 </head>
 <body>
-    <form class ="f" id="type">
+    <form class="f" id="type">
         <a href="notificaciones.html">
             <img src="../img/icons/icon-back.png" alt="" width="100px">
         </a>
         <h2>Enviar Mensaje</h2>
-
+    
         <div class="client-types">
             <p>Seleccione el tipo</p>
             <input type="radio" id="all" name="type-client" value="0">
@@ -50,28 +50,29 @@
     
         <div class="select-option">
             <p>Seleccione la ubicacion</p>
-            <input type="checkbox" id="all-country" name="all-country" value="4">
-            <label for="4">Todos</label>
-
-            <select class = "form-select country" label ="Default select example" onchange="loadStates()">
+            <input type="checkbox" id="all-country" name="all-country" value="4" onchange="toggleSelect()">
+            <label for="all-country">Todos</label>
+    
+            <select class="form-select country" label="Default select example" onchange="loadStates()" disabled>
                 <option selected>Seleccionar Pais</option>
             </select>
-            <select class = "form-select state" label ="Default select example" onchange="loadCities()">
+            <select class="form-select state" label="Default select example" onchange="loadCities()" disabled>
                 <option selected>Seleccionar Estado</option>
             </select>
-            <select class = "form-select city" label ="Default select example" onchange="fillLocation()">
+            <select class="form-select city" label="Default select example" disabled>
                 <option selected>Seleccionar Ciudad</option>
             </select>
-        </div>  
+        </div>
         <div class="message">
             <label for="asunto">Asunto</label><br>
-            <input type="text" id="asunto" name="asunto" size = "60"> <br>
+            <input type="text" id="asunto" name="asunto" size="60"> <br>
             <label for="contenido">Contenido</label><br>
-            <textarea style="resize: none;" type="message" rows="30" cols="50"></textarea>
+            <textarea style="resize: none;" id="contenido" rows="30" cols="50"></textarea>
         </div>
     
-      <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar">
     </form>
-    <script src="..\js\location_dropdown.js"></script>
+    
+    <script src="..\js\toogle.js"></script>
 </body>
 </html>
