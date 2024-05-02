@@ -2,7 +2,7 @@ console.log("running");
 //object shorthand -> 
 var config = {
     cUrl: 'https://api.countrystatecity.in/v1/countries',
-    cKey: 'asdasfdaf', //get the key of the api :(
+    cKey: 'YmFIRDRlcUlVcXJYN3BZaDAySXI4UDRzWThpeThaVld3S01ZRTRRSQ==',
     //implement the api using node js with database from
     //https://github.com/dr5hn/countries-states-cities-database
 }
@@ -40,10 +40,10 @@ function loadStates(){
     citySelect.disabled = true;
     stateSelect.style.pointerEvents = 'auto';
     citySelect.style.pointerEvents = 'none';
-    const selectedCountryCode = "countrySelect.value"
+    const selectedCountryCode = countrySelect.value
 
     stateSelect.innerHTML = '<option value="">Seleccionar estado</option>'; //limpiar los estados
-    fetch('${config.cUrl}/${selectedCountryCode}/states', {headers: {"X-CSCAPI-KEY": config.cKey}})
+    fetch(`${config.cUrl}/${selectedCountryCode}/states`, {headers: {"X-CSCAPI-KEY": config.cKey}})
     .then(response => response.json())
     .then(data => {
         data.forEach(state => {
@@ -53,10 +53,9 @@ function loadStates(){
             stateSelect.appendChild(option);;
         })
     })
-    .catch(error => console.error('Error cargando los estados'), error)
-
-
+    .catch(error => console.error('Error cargando los estados', error))
 }
+
 
 function loadCities(){
     stateSelect.disabled = false;
@@ -66,60 +65,43 @@ function loadCities(){
     const selectedCountryCode = countrySelect.value;
     const selectedStateCode = stateSelect.value;
     citySelect.innerHTML = '<option value ="">Seleccionar Ciudad</option>';
-    fetch('${config.cUrl}/${selectedCountryCode}/states/${selectedStateCode}/cities', {headers: {"X-CSCAPI-KEY": config.cKey}})
+    fetch(`${config.cUrl}/${selectedCountryCode}/states/${selectedStateCode}/cities`, {headers: {"X-CSCAPI-KEY": config.cKey}})
     .then(response => response.json())
     .then(data => {
         data.forEach(city => {
             const option = document.createElement('option')
             option.value = city.iso2;
             option.textContent = city.name;
-            citySelect.appendChild(option);;
+            citySelect.appendChild(option);
         })
     })
 }
 
 function fillLocation() {
+    console.log("fillLocation!!!");
+    const my_cityName = citySelect.options[citySelect.selectedIndex].textContent;
+    
+
     const selectedCountryCode = countrySelect.value;
     const selectedStateCode = stateSelect.value;
+    
+    var mod1 = document.getElementById('lat');
+    var mod2 = document.getElementById('long');
     
     fetch(`${config.cUrl}/${selectedCountryCode}/states/${selectedStateCode}/cities`, {headers: {"X-CSCAPI-KEY": config.cKey}})
         .then(response => response.json())
         .then(data => {
-            for (let i = 0; i < data.length; i++) {
-                const city = data[i];
-                if (selectedCountryCode == city.country_code && selectedStateCode == city.country_code) {
-                    var mod1 = document.querySelector('.lat');
-                    var mod2 = document.querySelector('.long');
-                    
+            data.forEach(city => {
+                const cityName = city.name.trim();
+                if(cityName.toLowerCase() === my_cityName.toLowerCase()){
                     mod1.value = city.latitude;
                     mod2.value = city.longitude;
-                    break;
+                    console.log("La latitud es: ", city.latitude);
+                    console.log("La longitud es: ", city.longitude);
                 }
-            }
-        });
+            })
+        })
+        .catch(error => console.error('Error cargando las ciudades', error));
 }
-
-//For select all locations
-var allChecked = document.getElementById('all-country');
-allChecked.addEventListener('change', function() {
-    if (this.checked) {
-        countrySelect.disabled = true;
-        stateSelect.disabled = true;
-        citySelect.disabled = true;
-        countrySelect.style.pointerEvents = 'none';
-
-        stateSelect.style.pointerEvents = 'none';
-        citySelect.style.pointerEvents = 'none';
-
-    } else {
-
-        countrySelect.disabled = false;
-
-        countrySelect.style.pointerEvents = 'auto';
-
-    }
-});
-
-
 
 window.onload = loadCountries;
