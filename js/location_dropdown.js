@@ -12,9 +12,7 @@ var countrySelect = document.querySelector('.country'),
     citySelect = document.querySelector('.city')
 
 function loadCountries(){
-
     let apiEndPoint = config.cUrl;
-
     fetch(apiEndPoint, {headers: {"X-CSCAPI-KEY": config.cKey}})
     .then(response => response.json())
     .then(data => {
@@ -80,11 +78,26 @@ function loadCities(){
 function fillLocation() {
     console.log("fillLocation!!!");
     const my_cityName = citySelect.options[citySelect.selectedIndex].textContent;
-    
+    const my_stateName = stateSelect.options[stateSelect.selectedIndex].textContent;
+    const my_countryName = countrySelect.options[countrySelect.selectedIndex].textContent;
+
+    console.log("Nombre: ", my_cityName);
 
     const selectedCountryCode = countrySelect.value;
     const selectedStateCode = stateSelect.value;
     
+    console.log("Identificador de la ciudad: ", my_cityName);
+    console.log("Identificador de la stado: ", my_stateName);
+    console.log("Identificador de la pais: ", my_countryName);
+
+    var fcountry = document.getElementById('fcountry');
+    var fstate= document.getElementById('fstate');
+    var fcity = document.getElementById('fcity');
+
+    fcountry.value = my_countryName;
+    fstate.value = my_stateName;
+    fcity.value = my_cityName;
+
     var mod1 = document.getElementById('lat');
     var mod2 = document.getElementById('long');
     
@@ -92,6 +105,7 @@ function fillLocation() {
         .then(response => response.json())
         .then(data => {
             data.forEach(city => {
+                console.log("Imprimiendo la ciudad: ", city.name)
                 const cityName = city.name.trim();
                 if(cityName.toLowerCase() === my_cityName.toLowerCase()){
                     mod1.value = city.latitude;
@@ -103,5 +117,25 @@ function fillLocation() {
         })
         .catch(error => console.error('Error cargando las ciudades', error));
 }
+
+
+
+function toggleSelects() {
+    const allCountryCheckbox = document.getElementById('all-country');
+    const countrySelect = document.querySelector('.country');
+    const stateSelect = document.querySelector('.state');
+    const citySelect = document.querySelector('.city');
+
+    if (allCountryCheckbox.checked) {
+        countrySelect.disabled = true;
+        stateSelect.disabled = true;
+        citySelect.disabled = true;
+    } else {
+        countrySelect.disabled = false;
+        stateSelect.disabled = false;
+        citySelect.disabled = false;
+    }
+}
+
 
 window.onload = loadCountries;
