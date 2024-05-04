@@ -16,7 +16,7 @@
             font-weight: 500;
             font-style: normal;
         }
-        .f{
+        .messageForm{
             margin: 1rem;
             background-color: aquamarine;
             padding: 2rem;
@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-    <form class="f" id="type">
+    <form class = "messageForm " id="messageForm" onsubmit="handleFormSubmit(this)">
         <a href="notificaciones.html">
             <img src="../img/icons/icon-back.png" alt="" width="100px">
         </a>
@@ -40,11 +40,11 @@
     
         <div class="client-types">
             <p>Seleccione el tipo</p>
-            <input type="radio" id="all" name="type-client" value="0">
+            <input type="radio" id="all" name="type-client" value="Todos">
             <label for="0">Todos</label>
-            <input type="radio" id="importer" name="type-client" value="1">
+            <input type="radio" id="importer" name="type-client" value="Importador">
             <label for="1">Importador</label>
-            <input type="radio" id="exporter" name="type-client" value="2">
+            <input type="radio" id="exporter" name="type-client" value="Exportador">
             <label for="2">Exportador</label><br>
         </div>
     
@@ -53,21 +53,26 @@
             <input type="checkbox" id="all-country" name="all-country" value="4" onchange="toggleSelect()">
             <label for="all-country">Todos</label>
     
-            <select class="form-select country" label="Default select example" onchange="loadStates()" disabled>
-                <option selected>Seleccionar Pais</option>
-            </select>
-            <select class="form-select state" label="Default select example" onchange="loadCities()" disabled>
-                <option selected>Seleccionar Estado</option>
-            </select>
-            <select class="form-select city" label="Default select example" disabled>
-                <option selected>Seleccionar Ciudad</option>
-            </select>
+            <div class="select-option">
+                <select class="form-select country" label="Default select example" onchange="loadStates()">
+                    <option selected>Seleccionar País</option>
+                    <input style="display: none;" type="text" id="fcountry" name="fcountry" value = "">
+                </select>
+                <select class="form-select state" label="Default select example" onchange="loadCities()">
+                    <option selected>Seleccionar Estado</option>
+                    <input style="display: none;" type="text" id="fstate" name="fstate" value = "">
+                </select>
+                <select class="form-select city" label="Default select example" onchange="fillBoxes()">
+                    <option selected>Seleccionar Ciudad</option>
+                    <input style="display: none;" type="text" id="fcity" name="fcity" value = "">
+                </select>
+            </div>
         </div>
         <div class="message">
             <label for="asunto">Asunto</label><br>
             <input type="text" id="asunto" name="asunto" size="60"> <br>
             <label for="contenido">Contenido</label><br>
-            <textarea style="resize: none;" id="contenido" rows="30" cols="50"></textarea>
+            <textarea name = "contenido" style="resize: none;" id="contenido" rows="30" cols="50"></textarea>
         </div>
     
         <input type="submit" value="Enviar">
