@@ -85,10 +85,7 @@ function fillLocation() {
 
     const selectedCountryCode = countrySelect.value;
     const selectedStateCode = stateSelect.value;
-    
-    console.log("Identificador de la ciudad: ", my_cityName);
-    console.log("Identificador de la stado: ", my_stateName);
-    console.log("Identificador de la pais: ", my_countryName);
+
 
     var fcountry = document.getElementById('fcountry');
     var fstate= document.getElementById('fstate');

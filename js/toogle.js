@@ -1,5 +1,4 @@
-console.log("running");
-//object shorthand -> 
+
 var config = {
     cUrl: 'https://api.countrystatecity.in/v1/countries',
     cKey: 'YmFIRDRlcUlVcXJYN3BZaDAySXI4UDRzWThpeThaVld3S01ZRTRRSQ==',
@@ -86,7 +85,7 @@ function loadCities(){
 
 
 function toggleSelect() {
-    const allCountryCheckbox = document.getElementById('all-country');
+    var allCountryCheckbox = document.getElementById('all-country');
     const countrySelect = document.querySelector('.country');
     const stateSelect = document.querySelector('.state');
     const citySelect = document.querySelector('.city');
@@ -106,5 +105,22 @@ function toggleSelect() {
     }
 }
 
+function fillBoxes() {
+    console.log("fillLocation!!!");
+    const my_cityName = citySelect.options[citySelect.selectedIndex].textContent;
+    const my_stateName = stateSelect.options[stateSelect.selectedIndex].textContent;
+    const my_countryName = countrySelect.options[countrySelect.selectedIndex].textContent;
 
+    const selectedCountryCode = countrySelect.value;
+    const selectedStateCode = stateSelect.value;
+
+    var fcountry = document.getElementById('fcountry');
+    var fstate= document.getElementById('fstate');
+    var fcity = document.getElementById('fcity');
+
+    fcountry.value = my_countryName;
+    fstate.value = my_stateName;
+    fcity.value = my_cityName;
+    
+}
 window.onload = loadCountries;
