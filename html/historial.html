@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+    <style>
+      #tableList{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      table {
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+      }
+
+      table th, table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        font-weight: normal;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      table th {
+        background-color: #f8f8f8;
+        text-align: left;
+      }
+
+      table tr:hover {
+        background-color: #e2e2e2;
+      }
+
+      table td:first-child, table th:first-child {
+        border-left: none;
+      }
+
+      table td:last-child, table th:last-child {
+        border-right: none;
+      }
+
+    </style>
+</head>
+<body>
+    <h1>Historial!</h1>
+    <br>
+    <div id="tableList">
+        <!-- Funcion implementada dentro de Google AS (No se uso fetch) -->
+    </div>
+
+    <script>
+        function successHandler(html) {
+            document.getElementById('tableList').innerHTML = html;
+        }
+        google.script.run.withSuccessHandler(successHandler).getRow();
+    </script>
+</body>
+</html>
